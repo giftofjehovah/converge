@@ -9,6 +9,7 @@ deployment:
       appname: converge-
 dependencies:
   pre:
+    - npm install -g mocha
     - npm install -g istanbul
     - npm i -g codeclimate-test-reporter
   post:
