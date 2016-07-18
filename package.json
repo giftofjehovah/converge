@@ -4,7 +4,7 @@
   "description": "API that calculates and suggests central places for people to meet",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "mocha"
   },
   "repository": {
