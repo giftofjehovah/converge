@@ -1,9 +1,11 @@
+/* global describe it */
+
 const expect = require('chai').expect
 const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
 
 describe('GET /', (done) => {
-  it("should return a json of 'key: value'", () => {
+  it("should return status 200'", () => {
     api.get('/')
       .set('Accept', 'application/json')
       .expect(200, done)
@@ -15,6 +17,7 @@ describe('GET /hello', (done) => {
     api.get('/hello')
       .set('Accept', 'application/json')
       .end((err, res) => {
+        if (err) return err
         expect(res.body).to.eq('hello world')
         done()
       })

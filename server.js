@@ -19,7 +19,7 @@ server.route({
   path: '/',
   handler: function (request, reply) {
     var data = {
-      key: 'value',
+      key: 'value'
     }
     reply(data)
   }
