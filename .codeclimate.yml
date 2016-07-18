@@ -1,0 +1,17 @@
+---
+engines:
+  fixme:
+    enabled: true
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+    exclude_paths:
+      - node_modules/
+    config:
+      languages:
+        javascript:
+          mass_threshold: 20
+ratings:
+  paths: []
+exclude_paths: []
