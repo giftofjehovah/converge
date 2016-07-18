@@ -9,7 +9,6 @@ const server = new Hapi.Server()
 
 // Create a server with a host and port
 server.connection({
-  host: 'localhost',
   port: process.env.PORT || 3000
 })
 
