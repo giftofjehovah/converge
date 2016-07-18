@@ -7,3 +7,9 @@ deployment:
     branch: master
     heroku:
       appname: converge-
+dependencies:
+  pre:
+    - npm install -g istanbul
+    - npm i -g codeclimate-test-reporter
+  post:
+    - CODECLIMATE_REPO_TOKEN=process.env.CODECLIMATE_TOKEN codeclimate-test-reporter < lcov.info

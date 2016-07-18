@@ -3,6 +3,7 @@
 const expect = require('chai').expect
 const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
+const server = require('../server')
 
 describe('GET /', (done) => {
   it("should return status 200'", () => {
