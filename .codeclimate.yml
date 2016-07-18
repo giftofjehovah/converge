@@ -1,7 +1,11 @@
 ---
 engines:
   eslint:
-    enabled: true
+    enabled: true,
+    channel: "eslint-2"
+  ratings:
+    paths:
+      - "**.js"
   duplication:
     enabled: true
     exclude_paths:
