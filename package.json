@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/giftofjehovah/converge#readme",
   "dependencies": {
-    "actionhero": "^14.0.9",
     "dotenv": "^2.0.0",
     "hapi": "^13.5.0",
     "mapbox": "^1.0.0-beta1",
