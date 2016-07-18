@@ -14,4 +14,4 @@ dependencies:
     - npm i -g codeclimate-test-reporter
 test:
   post:
-    - CODECLIMATE_REPO_TOKEN=process.env.CODECLIMATE_TOKEN codeclimate-test-reporter < lcov.info
+    - CODECLIMATE_REPO_TOKEN=process.env.CODECLIMATE_TOKEN codeclimate-test-reporter < coverage/lcov.info
