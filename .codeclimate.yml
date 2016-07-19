@@ -10,5 +10,6 @@ engines:
         javascript:
           mass_threshold: 20
 ratings:
-  paths: []
+  paths:
+    - "**.js"
 exclude_paths: []
