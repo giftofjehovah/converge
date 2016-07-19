@@ -10,8 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         // associations can be defined here
-        Activity.belongsToMany(models.Session, {through: 'SessionActivity'})
-        Activity.belongsToMany(models.Tag, {through: 'ActivityTag'})
+        Activity.belongsToMany(models.Session, {
+          through: 'SessionActivity',
+          onDelete: 'CASCADE'
+        })
+        Activity.belongsToMany(models.Tag, {
+          through: 'ActivityTag',
+          onDelete: 'CASCADE'
+        })
       }
     }
   })

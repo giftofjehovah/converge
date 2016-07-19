@@ -7,7 +7,10 @@ module.exports = function (sequelize, DataTypes) {
       associate: function (models) {
         // associations can be defined here
         Session.hasMany(models.Marker)
-        Session.belongsToMany(models.Activity, {through: 'SessionActivity'})
+        Session.belongsToMany(models.Activity, {
+          through: 'SessionActivity',
+          onDelete: 'CASCADE'
+        })
       }
     }
   })
