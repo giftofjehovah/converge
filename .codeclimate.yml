@@ -1,6 +1,12 @@
 engines:
   eslint:
-    enabled: true,
+    enabled: true
+    config:
+      config: .eslintrc
+      extensions:
+        - .es6
+        - .js
+        - .jsx
   duplication:
     enabled: true
     exclude_paths:
@@ -9,7 +15,9 @@ engines:
       languages:
         javascript:
           mass_threshold: 20
-ratings:
-  paths:
-    - "**.js"
+  ratings:
+    paths:
+      - "**.es6"
+      - "**.js"
+      - "**.jsx"
 exclude_paths: []
