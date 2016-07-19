@@ -1,21 +1,15 @@
 'use strict'
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.createTable('Markers', {
+    return queryInterface.createTable('Tags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      lat: {
-        type: Sequelize.FLOAT
-      },
-      long: {
-        type: Sequelize.FLOAT
-      },
-      UserId: {
-        type: Sequelize.INTEGER
+      name: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +22,6 @@ module.exports = {
     })
   },
   down: function (queryInterface, Sequelize) {
-    return queryInterface.dropTable('Markers')
+    return queryInterface.dropTable('Tags')
   }
 }
