@@ -15,9 +15,9 @@ engines:
       languages:
         javascript:
           mass_threshold: 20
-  ratings:
-    paths:
-      - "**.es6"
-      - "**.js"
-      - "**.jsx"
+ratings:
+  paths:
+    - "**.es6"
+    - "**.js"
+    - "**.jsx"
 exclude_paths: []
