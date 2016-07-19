@@ -1,9 +1,4 @@
 'use strict'
-
-// ROLLBAR - include and initialize the rollbar library with your access token
-const rollbar = require('rollbar')
-rollbar.init('cc48181936bf4278a804884acd0ae6a5')
-
 const Hapi = require('hapi')
 const server = new Hapi.Server()
 
@@ -12,30 +7,29 @@ server.connection({
   port: process.env.PORT || 3000
 })
 
-// Add the route
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: function (request, reply) {
-    var data = {
-      key: 'value'
+server.register(require('inert'), (err) => {
+  if (err) throw err
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: function (request, reply) {
+      reply.file('./public/index.html')
     }
-    reply(data)
-  }
+  })
 })
+
+// Add the route
 server.route({
   method: 'GET',
   path: '/hello',
   handler: function (request, reply) {
-    return reply('hello world')
+    reply({msg: 'hello world'})
   }
 })
 
 // Start the server
 server.start((err) => {
-  if (err) {
-    throw err
-  }
+  if (err) throw err
   console.log('Server running at:', server.info.uri)
 })
 
