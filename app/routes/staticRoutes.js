@@ -1,5 +1,4 @@
 const staticController = require('../controllers/staticController')
-const routes = []
 
 const indexRoute = {
   method: 'GET',
@@ -7,5 +6,4 @@ const indexRoute = {
   handler: staticController.index
 }
 
-routes.push(indexRoute)
-module.exports = routes
+module.exports = [indexRoute]
