@@ -1,8 +1,8 @@
 'use strict'
 const Hapi = require('hapi')
 const server = new Hapi.Server()
-const models = require('./models/index')
-
+const models = require('./app/models/index')
+const staticRoutes = require('./app/routes/staticRoutes')
 // Create a server with a host and port
 server.connection({
   port: process.env.PORT || 3000
@@ -10,23 +10,10 @@ server.connection({
 
 server.register(require('inert'), (err) => {
   if (err) throw err
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
-      reply.file('./public/index.html')
-    }
-  })
+  server.route(staticRoutes)
 })
 
 // Add the route
-server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: function (request, reply) {
-    return reply({msg: 'hello world'})
-  }
-})
 
 // Start the server
 models.sequelize.sync().then(() => {
