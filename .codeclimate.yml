@@ -11,6 +11,8 @@ engines:
     enabled: true
     exclude_paths:
       - node_modules/
+      - coverage/
+      - migrations/
     config:
       languages:
         javascript:

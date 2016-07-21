@@ -17,16 +17,15 @@ describe('POST /maps', () => {
       .expect(200, done)
   })
 
-  // it('should return hi', (done) => {
-  //   api.post('/maps')
-  //     .set('Accept', 'application/json')
-  //     .end((err, res) => {
-  //       if (err) return err
-  //       console.log(res.body)
-  //       res.body.to.eq({msg: 1})
-  //       done()
-  //     })
-  // })
+  it('should return an object', (done) => {
+    api.post('/maps')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) return err
+        expect(res.body).to.be.an('object')
+        done()
+      })
+  })
 })
 
 // describe('GET /hello', (done) => {

@@ -1,3 +1,4 @@
+'use strict'
 const mapController = require('../controllers/mapController')
 
 const generateLink = {
