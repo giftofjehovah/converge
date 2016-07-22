@@ -4,9 +4,7 @@ const models = require('../app/models/index')
 
 describe('Session model', function () {
   before((done) => {
-    models.sequelize.sync().then(() => {
-      models.Session.create({link: 'testing'}).then(() => done())
-    })
+    models.Session.create({link: 'testing'}).then(() => done())
   })
   it('should return the link', (done) => {
     models.Session.findOne({where: {link: 'testing'}})

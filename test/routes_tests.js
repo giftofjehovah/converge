@@ -33,7 +33,7 @@ describe('POST /maps', () => {
   })
 
   after(() => {
-    models.Session.drop({force: true})
+    models.Session.truncate()
   })
 })
 
