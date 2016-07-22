@@ -1,6 +1,7 @@
 /* global describe it before after*/
 const expect = require('chai').expect
 const models = require('../app/models/index')
+models.sequelize.sync()
 
 describe('Session model', function () {
   before((done) => {
