@@ -4,6 +4,7 @@ const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
 const models = require('../app/models/index')
 require('../server').start()
+models.sequelize.sync()
 
 describe('GET index page', () => {
   it('should return a 200', (done) => {
