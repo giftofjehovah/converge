@@ -7,4 +7,10 @@ const generateLink = {
   handler: mapController.generateLink
 }
 
-module.exports = [generateLink]
+const getMap = {
+  method: 'GET',
+  path: '/maps/{link}',
+  handler: mapController.getMap
+}
+
+module.exports = [generateLink, getMap]

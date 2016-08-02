@@ -21,9 +21,8 @@ describe('Session model', function () {
       done()
     })
   })
-  after(() => {
-    models.Session.findOne({where: {link: 'testing'}})
-      .then((session) => session.destroy())
+  after((done) => {
+    models.Session.destroy({where: {link: 'testing'}}).then((session) => done())
   })
 })
 

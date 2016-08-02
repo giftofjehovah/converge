@@ -13,7 +13,6 @@ server.register(require('inert'), (err) => {
   if (err) throw err
   server.route(staticRoutes)
 })
-
 // Add the route
 server.route(mapRoutes)
 // Start the server

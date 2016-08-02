@@ -12,39 +12,55 @@ describe('GET index page', () => {
 })
 
 describe('POST /maps', () => {
+  let link = ''
   before((done) => {
     models.sequelize.sync().then(() => done())
   })
 
-  it('should return a 200', (done) => {
-    api.post('/maps')
-      .set('Accept', 'application/json')
-      .expect(200, done)
-  })
+  // it('should return a 200', (done) => {
+  //   api.post('/maps')
+  //   .expect(200, done)
+  // })
 
   it('should return an object', (done) => {
     api.post('/maps')
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) return err
-        expect(res.body).to.be.an('object')
-        done()
-      })
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err
+      link = res.body.link
+      expect(res.body).to.be.an('object')
+      done()
+    })
   })
 
-  after(() => {
-    models.Session.truncate()
+  after((done) => {
+    models.Session.destroy({where: {link: link}}).then(() => done())
+    // models.Session.truncate().then(() => done())
   })
 })
 
-// describe('GET /hello', (done) => {
-//   it("returns 'hello world' at GET /hello", () => {
-//     api.get('/hello')
-//       .set('Accept', 'application/json')
-//       .end((err, res) => {
-//         if (err) return err
-//         expect(res.body).to.eq({msg: 'hello world'})
-//         done()
-//       })
-//   })
-// })
+describe('GET /maps/:link', () => {
+  let link = ''
+  before((done) => {
+    api.post('/maps')
+    .end((err, res) => {
+      if (err) throw err
+      link = res.body.link
+      done()
+    })
+  })
+
+  it('should be able to return generated link', (done) => {
+    api.get(`/maps/${link}`)
+    .end((err, res) => {
+      if (err) throw err
+      expect(res.body.session).to.equal(link)
+      done()
+    })
+  })
+
+  after((done) => {
+    models.Session.destroy({where: {link: link}}).then(() => done())
+    // models.Session.truncate()
+  })
+})

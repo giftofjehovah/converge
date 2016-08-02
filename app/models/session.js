@@ -4,13 +4,13 @@ const superb = require('superb')
 const helper = require('../helper')
 
 module.exports = function (sequelize, DataTypes) {
-  var Session = sequelize.define('Session', {
+  const Session = sequelize.define('Session', {
     link: DataTypes.STRING
   }, {
     classMethods: {
       associate: function (models) {
         // associations can be defined here
-        Session.hasMany(models.Marker)
+        Session.hasMany(models.Marker, {onDelete: 'CASCADE'})
         Session.belongsToMany(models.Activity, {
           through: 'SessionActivity',
           onDelete: 'CASCADE'
