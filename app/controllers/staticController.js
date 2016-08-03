@@ -4,5 +4,5 @@ function index (request, reply) {
 }
 
 module.exports = {
-  index: index
+  index
 }

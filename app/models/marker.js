@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         // associations can be defined here
-        Marker.belongsTo(models.Session, {onDelete: 'CASCADE'})
+        Marker.belongsTo(models.Session, {hooks: true})
       }
     }
   })

@@ -14,7 +14,7 @@ module.exports = {
       long: {
         type: Sequelize.FLOAT
       },
-      UserId: {
+      SessionId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

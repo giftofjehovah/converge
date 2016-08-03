@@ -15,14 +15,19 @@ function getMap (request, reply) {
 }
 
 function postLocation (request, reply) {
-  console.log(request.payload.lat, request.payload.long)
   models.Session.findOne({where: {link: request.params.link}})
-  .then(session => reply({session: session.link}))
+  .then((session) => {
+    models.Marker.create({lat: request.payload.lat, long: request.payload.long})
+    .then(marker => session.addMarkers(marker))
+    reply({session: session.link})
+    // console.log(session.addMarkers({lat:}))
+    // session.addMarkers()
+  })
   .catch(err => reply(err))
 }
 
 module.exports = {
-  generateLink: generateLink,
-  getMap: getMap,
-  postLocation: postLocation
+  generateLink,
+  getMap,
+  postLocation
 }
