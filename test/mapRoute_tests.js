@@ -3,13 +3,6 @@ const expect = require('chai').expect
 const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
 const models = require('../app/models/index')
-require('../server').start()
-
-describe('GET index page', () => {
-  it('should return a 200', (done) => {
-    api.get('/').expect(200, done)
-  })
-})
 
 describe('POST /maps', () => {
   let link = ''
@@ -35,7 +28,6 @@ describe('POST /maps', () => {
 
   after((done) => {
     models.Session.destroy({where: {link: link}}).then(() => done())
-    // models.Session.truncate().then(() => done())
   })
 })
 
@@ -61,6 +53,27 @@ describe('GET /maps/:link', () => {
 
   after((done) => {
     models.Session.destroy({where: {link: link}}).then(() => done())
-    // models.Session.truncate()
+  })
+})
+
+describe('POST /maps/:link', () => {
+  let link = ''
+  before((done) => {
+    api.post('/maps')
+    .end((err, res) => {
+      if (err) throw err
+      link = res.body.link
+      done()
+    })
+  })
+
+  it('should return 200', function (done) {
+    api.post(`/maps/${link}`)
+    .send({lat: 1.2790176, long: 103.8414031})
+    .expect(200, done)
+  })
+
+  after((done) => {
+    models.Session.destroy({where: {link: link}}).then(() => done())
   })
 })

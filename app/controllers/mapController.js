@@ -14,7 +14,15 @@ function getMap (request, reply) {
   .catch(err => reply(err))
 }
 
+function postLocation (request, reply) {
+  console.log(request.payload.lat, request.payload.long)
+  models.Session.findOne({where: {link: request.params.link}})
+  .then(session => reply({session: session.link}))
+  .catch(err => reply(err))
+}
+
 module.exports = {
   generateLink: generateLink,
-  getMap: getMap
+  getMap: getMap,
+  postLocation: postLocation
 }

@@ -13,4 +13,10 @@ const getMap = {
   handler: mapController.getMap
 }
 
-module.exports = [generateLink, getMap]
+const postLocation = {
+  method: 'POST',
+  path: '/maps/{link}',
+  handler: mapController.postLocation
+}
+
+module.exports = [generateLink, getMap, postLocation]
