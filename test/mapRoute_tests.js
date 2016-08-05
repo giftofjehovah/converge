@@ -67,10 +67,15 @@ describe('POST /maps/:link', () => {
     })
   })
 
-  it('should return 200', function (done) {
+  it('should return 200 and success message', function (done) {
     api.post(`/maps/${link}`)
     .send({lat: 1.2790176, long: 103.8414031})
-    .expect(200, done)
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err
+      expect(res.body.message).to.equal('add marker successfully')
+      done()
+    })
   })
 
   after((done) => {
