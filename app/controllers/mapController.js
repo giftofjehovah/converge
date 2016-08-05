@@ -22,7 +22,7 @@ function postLocation (request, reply) {
     return models.Marker.create({lat: request.payload.lat, long: request.payload.long})
   })
   .then(marker => _session.addMarkers(marker))
-  .then(marker => reply({message: 'add marker successfully'}))
+  .then(marker => reply({message: 'added marker successfully'}))
   .catch(err => reply(err))
 }
 

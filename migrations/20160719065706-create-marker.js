@@ -15,7 +15,8 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       SessionId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,

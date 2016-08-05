@@ -10,12 +10,7 @@ describe('POST /maps', () => {
     models.sequelize.sync().then(() => done())
   })
 
-  // it('should return a 200', (done) => {
-  //   api.post('/maps')
-  //   .expect(200, done)
-  // })
-
-  it('should return an object', (done) => {
+  it('should return 200 and an object', (done) => {
     api.post('/maps')
     .expect(200)
     .end((err, res) => {
@@ -73,7 +68,7 @@ describe('POST /maps/:link', () => {
     .expect(200)
     .end((err, res) => {
       if (err) throw err
-      expect(res.body.message).to.equal('add marker successfully')
+      expect(res.body.message).to.equal('added marker successfully')
       done()
     })
   })

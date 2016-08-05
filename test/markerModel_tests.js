@@ -7,7 +7,7 @@ describe('Marker model', function () {
   before((done) => {
     models.Marker.create({lat: 1.2790176, long: 103.8414031}).then(() => done())
   })
-  it('should return the link', (done) => {
+  it('lat and long should be in the database', (done) => {
     models.Marker.find({where: {lat: 1.2790176, long: 103.8414031}})
     .then((marker) => {
       expect(marker.lat).to.equal(1.2790176)
