@@ -4,6 +4,8 @@ const server = new Hapi.Server()
 const models = require('./app/models/index')
 const staticRoutes = require('./app/routes/staticRoutes')
 const mapRoutes = require('./app/routes/mapRoutes')
+const activityRoutes = require('./app/routes/activityRoutes')
+
 // Create a server with a host and port
 server.connection({
   port: process.env.PORT || 3000
@@ -15,6 +17,7 @@ server.register(require('inert'), (err) => {
 })
 // Add the route
 server.route(mapRoutes)
+server.route(activityRoutes)
 // Start the server
 models.sequelize.sync().then(() => {
   server.start((err) => {
