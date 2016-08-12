@@ -13,36 +13,43 @@ describe('openingHour model', function () {
     Saturday: '8am to 11am',
     Sunday: '8am to 11am'
   }
-  const newTimings = {
-    Monday: {
+  const newTimings = [
+    {
+      day: 'Monday',
       openingHour: '7am',
       closingHour: '12am'
     },
-    Tuesday: {
+    {
+      day: 'Tuesday',
       openingHour: '8am',
       closingHour: '11am'
     },
-    Wednesday: {
+    {
+      day: 'Wednesday',
       openingHour: '8am',
       closingHour: '11am'
     },
-    Thursday: {
+    {
+      day: 'Thursday',
       openingHour: '8am',
       closingHour: '11am'
     },
-    Friday: {
+    {
+      day: 'Friday',
       openingHour: '8am',
       closingHour: '11am'
     },
-    Saturday: {
+    {
+      day: 'Saturday',
       openingHour: '8am',
       closingHour: '11am'
     },
-    Sunday: {
+    {
+      day: 'Sunday',
       openingHour: '8am',
       closingHour: '11am'
     }
-  }
+  ]
   it('parseTime function should return an array of objects of start and end time', (done) => {
     const timing = models.OpeningHour.parseTime(timings)
     expect(timing).to.deep.eql(newTimings)
