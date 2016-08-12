@@ -7,7 +7,7 @@ describe('Session model', function () {
   before((done) => {
     models.Session.create({link: 'testing'}).then(() => done())
   })
-  it('linke should be in the database', (done) => {
+  it('link should be in the database', (done) => {
     models.Session.findOne({where: {link: 'testing'}})
     .then((session) => {
       expect(session.link).to.equal('testing')
