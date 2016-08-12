@@ -1,8 +1,8 @@
-/* global describe it before after*/
+/* global describe it after*/
 const expect = require('chai').expect
 const supertest = require('supertest')
 const api = supertest('http://localhost:3000')
-// const models = require('../app/models/index')
+const models = require('../app/models/index')
 
 describe('POST /activities', () => {
   const data = {
@@ -26,13 +26,17 @@ describe('POST /activities', () => {
       .expect(200)
       .end((err, res) => {
         if (err) throw err
+        data.id = res.body.id
         expect(res.body).to.be.an('object')
-        expect(res.body).to.deep.eql(data)
+        expect(res.body.name).to.eql('Chef Yamashita')
+        expect(res.body.address).to.eql('1 Tanjong Pagar Plaza #02-44 Singapore 082001')
+        expect(res.body.contact).to.eql('+65 98282057')
+        expect(res.body.link).to.eql('http://www.burpple.com/chef-yamashita')
         done()
       })
   })
 
-// after((done) => {
-//   models.Session.destroy({where: {link: link}}).then(() => done())
-// })
+  after((done) => {
+    models.Activity.destroy({where: {id: data.id}}).then(() => done())
+  })
 })

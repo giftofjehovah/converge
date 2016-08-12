@@ -1,4 +1,5 @@
 'use strict'
+require('dotenv').config({silent: true})
 const Hapi = require('hapi')
 const server = new Hapi.Server()
 const models = require('./app/models/index')

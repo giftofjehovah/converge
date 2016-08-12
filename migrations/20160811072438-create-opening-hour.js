@@ -1,30 +1,25 @@
 'use strict'
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.createTable('Activities', {
+    return queryInterface.createTable('OpeningHours', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      day: {
         type: Sequelize.STRING
       },
-      address: {
+      openingHour: {
         type: Sequelize.STRING
       },
-      contact: {
+      closingHour: {
         type: Sequelize.STRING
       },
-      link: {
-        type: Sequelize.STRING
-      },
-      lat: {
-        type: Sequelize.FLOAT
-      },
-      long: {
-        type: Sequelize.FLOAT
+      ActivityId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +32,6 @@ module.exports = {
     })
   },
   down: function (queryInterface, Sequelize) {
-    return queryInterface.dropTable('Activities')
+    return queryInterface.dropTable('OpeningHours')
   }
 }
