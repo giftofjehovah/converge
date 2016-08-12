@@ -9,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         // associations can be defined here
+        OpeningHour.belongsTo(models.Activity)
       },
       parseTime: function (openingHours) {
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']

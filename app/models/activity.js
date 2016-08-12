@@ -20,6 +20,7 @@ module.exports = function (sequelize, DataTypes) {
           through: 'ActivityTag',
           onDelete: 'CASCADE'
         })
+        Activity.hasMany(models.OpeningHour, {onDelete: 'cascade', hooks: true})
       }
     }
   })
