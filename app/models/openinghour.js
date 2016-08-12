@@ -9,6 +9,16 @@ module.exports = function (sequelize, DataTypes) {
     classMethods: {
       associate: function (models) {
         // associations can be defined here
+      },
+      parseTime: function (openingHours) {
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        return days.reduce((prev, current) => {
+          const timing = openingHours[current].split(' to ')
+          prev[current] = {}
+          prev[current]['openingHour'] = timing[0]
+          prev[current]['closingHour'] = timing[1]
+          return prev
+        }, {})
       }
     }
   })
