@@ -16,7 +16,7 @@ engines:
     config:
       languages:
         javascript:
-          mass_threshold: 35
+          mass_threshold: 100
 ratings:
   paths:
     - "**.es6"
