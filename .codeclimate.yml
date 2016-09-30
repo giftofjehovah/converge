@@ -11,10 +11,12 @@ engines:
     enabled: true
     exclude_paths:
       - node_modules/
+      - coverage/
+      - migrations/
     config:
       languages:
         javascript:
-          mass_threshold: 35
+          mass_threshold: 100
 ratings:
   paths:
     - "**.es6"
